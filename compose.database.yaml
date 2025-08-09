@@ -1,0 +1,32 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_db_products
+    environment:
+      MYSQL_ROOT_PASSWORD: "P@ssword"
+      MYSQL_DATABASE: my_products
+      MYSQL_USER: lsupwp
+      MYSQL_PASSWORD: "P@ssword"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db_api:/var/lib/mysql
+    networks:
+      - mynetwork
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_ui_products
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
