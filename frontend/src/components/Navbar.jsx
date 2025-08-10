@@ -26,12 +26,6 @@ const Navbar = () => {
                     >
                         Create Product
                     </Link>
-                    <Link 
-                        to="/products/update" 
-                        className="text-blue-600 font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:bg-blue-600 hover:text-white hover:-translate-y-0.5 text-sm"
-                    >
-                        Update Product
-                    </Link>
                 </div>
             </div>
         </nav>

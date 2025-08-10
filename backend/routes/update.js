@@ -33,7 +33,7 @@ router.post('/update', async (req, res)=>{
             return responseError(res, "Not found product!");
         }
 
-        if(product[0].price == parsePrice || product[0].cost == parseCost || product[0].name == newName) {
+        if(product[0].price == parsePrice && product[0].cost == parseCost && product[0].name == newName) {
             return responseError(res, "No changes!");
         }
 

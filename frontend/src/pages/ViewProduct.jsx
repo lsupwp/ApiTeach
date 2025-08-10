@@ -15,18 +15,19 @@ const ViewProduct = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             const res = await axios.get(`http://127.0.0.1:3001/api/products/read?id=${id}`)
-            if (res.status === "error") {
+            if (res.data.status === "error") {
                 setError(res.data.message);
                 return;
             }
             setProduct(res.data.product);
+            setError(null);
         }
         fetchProduct()
     }, [id]);
 
     return (
         <div className="w-full h-screen flex flex-col items-center justify-start">
-            <div id="form" className="w-[80%] flex flex-col justify-between items-center mt-8">
+            <div className="w-[80%] flex flex-col justify-between items-center mt-8">
                 {error && (
                     <div role="alert" className="alert alert-error w-full mb-2">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
